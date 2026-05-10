@@ -1,0 +1,7 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K3:45:51 PM [express] serving on port 5000
+3:45:55 PM [express] GET /api/debug-calendar 200 in 220ms :: {"found":true,"settingsKeys":["oauth","access_token"],"hasAccessToken":true,"hasOauthCredentials":true,"tokenPreview":"ya29.a0Aa7MYioVEp_Cz..."}
+3:46:18 PM [express] GET /api/debug-calendar 200 in 172ms :: {"found":true,"settingsKeys":["oauth","access_token"],"hasAccessToken":true,"hasOauthCredentials":true,"tokenPreview":"ya29.a0Aa7MYioVEp_Cz..."}

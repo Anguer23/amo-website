@@ -1,0 +1,221 @@
+PREMIUM WEBSITE PROMPT — “AM OPERATIONS GROUP” (Apple-level, black/white, intentional, alive)
+
+Create a single-page premium website for “AM Operations Group” with the same product-story feel and intentional scroll pacing as Apple.com, with the modern, animated, high-end interaction language of openclaw.ai, but executed in strict black-and-white minimalism. The website must feel calm, surgical, and expensive—never busy, never “trucking Instagram.” Every section must feel designed with purpose. As the user scrolls, each section reveals new information with smooth, confident motion. Micro-interactions should activate on hover with subtle feedback and data responses. The page should feel like a high-end software/operations company, not a dispatch agency.
+
+BRAND / TONE
+- Minimal. Black & white. Precision. “Apple-level seriousness.”
+- No flashy trucking clichés, no loud colors, no chaotic layouts.
+- Text should read like a disciplined operations firm: structured, calm authority.
+- Position AM Operations Group as an operations optimization partner—not load-board dispatch.
+- Replace all mention of USPS or “federal freight” with language like: “high-accountability freight operations,” “enterprise-grade freight discipline,” “matrix-driven lane structure,” “compliance-level execution,” “high-service freight standards.” (Same weight, zero USPS.)
+
+CORE COMPANY CONTEXT TO EMBED THROUGHOUT (use all of this)
+AM Operations Group is a technology-driven dispatch and capacity optimization service founded by:
+- Angel Guerrero (Federal Contracts Manager background; now framed as: high-accountability freight operations leader with compliance-level discipline)
+- Max (Logistics Manager, active operations experience)
+
+We specialize in:
+- Owner operators
+- Small to mid-size trucking companies (1–20 trucks)
+- Carriers struggling to consistently hit weekly gross targets
+
+Mission:
+- Keep trucks moving at strong, sustainable rates using AI, structured broker relationships, and disciplined operational systems.
+- NOT traditional “load board dispatch.”
+- We are an operations optimization partner.
+
+THE MARKET PROBLEM (communicate clearly, premium)
+Most owner operators fail because of:
+- Inconsistent lane strategy
+- Over-reliance on load boards
+- Weak broker relationships
+- Poor rate negotiation
+- Deadhead inefficiency
+- No data tracking
+- No tech stack
+- No strategic weekly planning
+They operate reactively. AM Operations operates structurally.
+
+COMPETITIVE ADVANTAGE (make it feel like a product moat)
+1) Industry Experience:
+- Angel: high-accountability, matrix-driven lane operations; service-change discipline; compliance-level execution
+- Max: active logistics manager
+They understand on-time performance, lane structure, risk mitigation, and high-service freight standards.
+
+2) Broker Network:
+- 1,000+ active brokers nationwide
+- Direct relationships (not just cold load board)
+- Ability to source freight beyond public boards
+
+3) Technology Layer:
+- AI-assisted rate analysis
+- GenLogs and market tracking tools
+- Lane data tracking
+- Historical rate comparison
+- Deadhead reduction modeling
+
+Positioning line:
+“AI-backed dispatch with enterprise-grade operational discipline.”
+
+SERVICE MODEL STRUCTURE (present as tiers, but premium)
+Tier 1 — Standard Dispatch
+- Load sourcing
+- Rate negotiation
+- Broker communication
+- Basic weekly reporting
+
+Tier 2 — Performance Optimization
+- Lane planning strategy
+- AI rate modeling
+- Deadhead analysis
+- Weekly KPI reporting
+- Broker relationship management
+
+Tier 3 — Capacity Partner (future vision)
+- Dedicated lane placement
+- Contract freight sourcing
+- Compliance management
+- Multi-truck optimization
+
+INTERNAL SYSTEMS (make this feel like the engine)
+Weekly cadence:
+- Every Monday: revenue targets per truck; primary lane strategy; fallback lanes
+- Daily: rate trend review; market heat map; deadhead %; broker performance tracking
+- Every Friday: weekly gross report; deadhead %; RPM; broker scorecard; improvement notes
+
+KPI DASHBOARD (non-negotiable, and should feel like a product feature)
+Track:
+- Weekly gross
+- Average RPM
+- Deadhead %
+- Average booking margin
+- Broker frequency
+- Rebooking rate
+- Rate vs market average
+- Load-to-truck ratio
+
+TARGET WEEKLY GROSS BENCHMARKS (use as “typical targets,” premium tone)
+- Dry Van: $5,500–$8,000+
+- Reefer: $6,000–$9,000+
+- Flatbed: $7,000+
+(Keep phrasing: “Targets vary by lane/season; we engineer toward stability.”)
+
+DESIGN SYSTEM / VISUAL LANGUAGE
+- Black background (#050505) and white typography with muted gray secondary text.
+- Ultra-clean grid, generous spacing, large margins, calm rhythm.
+- Use glassy, subtle panels with thin borders (white at ~10–14% opacity).
+- Soft shadows and controlled light bloom; no colorful gradients.
+- Monospaced labels for metrics (to feel analytical).
+- Hero typography: bold, wide, confident (Apple-like).
+- Sections should not be crowded. Minimal copy with dense meaning.
+- Use intentional scroll storytelling: reveal → pause → deepen → reveal.
+
+MOTION & INTERACTIONS (must feel alive)
+- Scrolling reveals: each section fades in + slightly rises with smooth easing.
+- The background feels alive: subtle drifting lightfield texture that moves slowly over time.
+- Cursor aura: a very subtle soft-light aura follows the cursor (low opacity, non-distracting).
+- Hover states: almost everything responds with a new animation—borders brighten, elements lift 1px, micro glows, numbers animate, lines redraw.
+- Animations are smooth, controlled, premium—never flashy.
+
+STRUCTURE OF THE PAGE (storyboard the scroll)
+1) NAVIGATION (sticky, minimal)
+- Left: AM Operations Group logo (must display user’s uploaded logo)
+- Center/right: Mission, Advantage, Reach, Dashboard, Tiers
+- Primary CTA: “See the system” or “Book a call”
+- Nav style: blurred glass strip, thin bottom border.
+
+2) HERO (first impression must hit hard)
+- Large headline that feels heavier than “Weekly consistency, engineered—not hoped for.”
+Use something with more weight like:
+“Revenue stability — engineered at the operations level.”
+or
+“Weekly performance — built like a system.”
+- Subheadline: concise explanation: AI-backed dispatch + lane structure + broker leverage + KPI discipline.
+- A small “What we optimize” card on the right: weekly targets, deadhead ceiling, broker network count.
+- Minimal chips below hero: “Lane strategy,” “Broker leverage,” “AI rate context,” “Deadhead control,” “KPI discipline.”
+
+3) MISSION (tight, surgical)
+- 3 premium cards:
+  - Structured weekly planning (targets, primary lanes, fallback lanes)
+  - Rate context + negotiation (AI-assisted market context)
+  - High-accountability operations discipline (on-time, risk mitigation, repeatability)
+Each card has 2–3 micro tags.
+
+4) ADVANTAGE (moat section)
+- Three cards:
+  - Broker network: 1,000+ active relationships beyond boards
+  - Technology layer: market tracking, historical comparisons, deadhead modeling
+  - Operations discipline: compliance-level execution, high-service freight standards
+Subtle animated divider lines and micro glow on hover.
+
+5) REACH (NATIONWIDE, “NO BOUNDARIES”)
+This section must feel like an interactive product feature.
+- Headline: “Nationwide reach”
+- Subtext: “No boundaries. We make something happen from anywhere—with AI + market context + relationships.”
+- A premium interactive US map presented as an outline integrated into the design (not a pasted graphic):
+  - The US map is an accurate SVG outline rendered as thin white strokes.
+  - It sits inside a glassy card with soft bloom and vignette.
+  - Overlay: animated network lines that draw in when the section enters view.
+  - Nodes pulse subtly (white glow, slow).
+- Region hover interaction (Option A):
+  Regions: West / Central / East.
+  On hover over a region:
+  - The region “activates” (brighter outline strokes, slight glow).
+  - A tooltip appears near cursor: region name + 3 quick KPIs.
+  - KPI tiles on the left update live with animated number transitions.
+  - The network routes redraw (line animation replays), reinforcing “alive data system.”
+- KPI tiles shown next to map:
+  - Avg RPM (region target)
+  - Deadhead ceiling (≤X%)
+  - Weekly target ($X.Xk+)
+  - Broker density (X+)
+These must animate and change per region.
+
+6) DASHBOARD (the “product” proof)
+- Interactive dashboard with tabs:
+  Left tabs: GROSS / RPM / DEADHEAD
+  Right tabs: REBOOK / PAY SPEED / RISK
+- Clicking each tab updates:
+  - KPI numbers (animated count)
+  - Bars/graphs shift (bar heights animate)
+  - A short interpretation line updates
+- Scroll KPI swapping:
+  As user scrolls into sections (Mission/Advantage/Reach/Case), the dashboard auto-switches to the most relevant metric view—this should feel intentional, like Apple story-scroll.
+
+7) TIERS (service model)
+- Present tiers as clean cards with minimal bullet points.
+- Each tier expands slightly on hover with subtle glow.
+- Tier 3 labeled “Future vision” with understated styling.
+
+8) FOOTER (minimal authority)
+- One-line positioning: “AI-backed dispatch. Enterprise-grade operational discipline.”
+- Contact CTA + optional short intake form button.
+
+COPY REQUIREMENTS (language rules)
+- Remove USPS entirely from every reference.
+- Avoid “we dispatch loads” language.
+Use: “optimize revenue,” “engineer weekly targets,” “capacity optimization,” “structured lanes,” “broker leverage,” “operational discipline,” “repeatable execution.”
+- Make the visitor FEEL seriousness: calm authority, measured confidence.
+- Keep it short and dense—no fluff.
+
+LOGO REQUIREMENT
+- The website must display the user’s logo in the navigation and optionally in the hero.
+- Logo treatment should be monochrome-compatible and feel premium.
+
+TECHNICAL / UI INTENT
+- The page should feel like a premium SaaS/product landing page for logistics operations.
+- Every section should have breathing room.
+- Every hover should trigger a subtle new animation.
+- The Reach Map must feel embedded into the design and respond with data.
+- The site should never feel crowded; it should feel like controlled power.
+
+DELIVERABLE
+Generate the website in a single cohesive design with:
+- black/white palette
+- scroll-based reveals
+- cursor aura (subtle)
+- alive background
+- interactive Reach map with region hover (Option A)
+- dashboard that updates numbers and visuals
+- all business details embedded exactly as described above
+- zero USPS mentions anywhere

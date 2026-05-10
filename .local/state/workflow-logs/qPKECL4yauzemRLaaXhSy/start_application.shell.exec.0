@@ -1,0 +1,13 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K3:43:27 PM [express] serving on port 5000
+✓ Test email sent to amopsgroup@gmail.com (id: 19d351df47c3f11c)
+3:44:09 PM [express] POST /api/test-email 200 in 508ms :: {"success":true,"messageId":"19d351df47c3f11c","message":"Test email sent successfully"}
+✓ Consultation created: f2f53b54-1cf1-4b1e-a4f5-e37db091a08a
+Failed to create calendar event: Invalid Credentials
+✓ Confirmation email sent to amopsgroup@gmail.com (id: 19d351e18f3ed5c7)
+Calendar event failed: Invalid Credentials
+3:44:18 PM [express] POST /api/consultations 201 in 441ms :: {"success":true,"id":"f2f53b54-1cf1-4b1e-a4f5-e37db091a08a","message":"Consultation request submitted successfully","emailSent":true,"calendarEventCreated":false}
+3:44:37 PM [express] GET /api/debug-calendar 200 in 6ms

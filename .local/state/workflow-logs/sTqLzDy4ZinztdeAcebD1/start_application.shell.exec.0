@@ -1,0 +1,8 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K3:49:12 PM [express] serving on port 5000
+✓ Consultation created: aded43a3-af68-4278-a1a3-2cc9f73c1cf0
+✓ Confirmation email + calendar invite sent to amopsgroup@gmail.com (id: 19d3522bae8c7d2b)
+3:49:21 PM [express] POST /api/consultations 201 in 1094ms :: {"success":true,"id":"aded43a3-af68-4278-a1a3-2cc9f73c1cf0","message":"Consultation request submitted successfully","emailSent":true,"calendarInviteSent":true}

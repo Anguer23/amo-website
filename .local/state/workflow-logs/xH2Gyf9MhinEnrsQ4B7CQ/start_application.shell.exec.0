@@ -1,0 +1,6 @@
+
+> rest-express@1.0.0 dev
+> NODE_ENV=development tsx server/index.ts
+
+[1G[0K3:47:10 PM [express] serving on port 5000
+3:47:14 PM [express] GET /api/debug-calendar 200 in 412ms :: {"found":true,"settingsKeys":["oauth","access_token"],"oauthKeys":["credentials"],"oauthCredKeys":["access_token","client_id","scope","refresh_token","expires_in","expires_at","token_type","raw"],"hasTopLevelToken":true,"hasOauthToken":true,"hasRefreshToken":true,"topLevelPreview":"ya29.a0Aa7MYioVEp_CzbR8j8...","oauthTokenPreview":"ya29.a0Aa7MYioVEp_CzbR8j8...","testTopLevel":{"success":false,"error":"Invalid Credentials","code":401},"testOauthToken":{"success":false,"error":"Invalid Credentials","code":401}}
