@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AM Operations Group — Full Operations Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070F;--card:rgba(255,255,255,.04);--cardh:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.08);--borderb:rgba(255,255,255,.18);
+  --silver:#B8B8CC;--silver-d:rgba(184,184,204,.10);--silver-l:rgba(184,184,204,.18);
+  --t1:rgba(255,255,255,.95);--t2:rgba(255,255,255,.55);--t3:rgba(255,255,255,.28);--t4:rgba(255,255,255,.12);
+  --fd:"Barlow Condensed",sans-serif;--fb:"Inter",sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--t1);font-family:var(--fb);-webkit-font-smoothing:antialiased;user-select:none;}
+#deck{position:relative;width:100vw;height:100vh;overflow:hidden;}
+.slide{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:68px 96px 92px;opacity:0;pointer-events:none;will-change:transform,opacity;}
+.slide.centered{align-items:center;text-align:center;}
+.slide.active{opacity:1;pointer-events:all;}
+.slide::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 900px 600px at 85% -5%,rgba(255,255,255,.018) 0%,transparent 60%);}
+.anim-exit-fwd{animation:exitFwd .48s cubic-bezier(.4,0,.2,1) forwards;}
+.anim-enter-fwd{animation:enterFwd .48s cubic-bezier(.4,0,.2,1) forwards;}
+.anim-exit-back{animation:exitBack .48s cubic-bezier(.4,0,.2,1) forwards;}
+.anim-enter-back{animation:enterBack .48s cubic-bezier(.4,0,.2,1) forwards;}
+@keyframes exitFwd{from{opacity:1;transform:translateX(0) scale(1)}to{opacity:0;transform:translateX(-72px) scale(.98)}}
+@keyframes enterFwd{from{opacity:0;transform:translateX(72px) scale(.98)}to{opacity:1;transform:translateX(0) scale(1)}}
+@keyframes exitBack{from{opacity:1;transform:translateX(0) scale(1)}to{opacity:0;transform:translateX(72px) scale(.98)}}
+@keyframes enterBack{from{opacity:0;transform:translateX(-72px) scale(.98)}to{opacity:1;transform:translateX(0) scale(1)}}
+.rv{opacity:0;transform:translateY(22px);}
+.rh{opacity:0;transform:translateX(-28px);}
+.slide.active .rv{animation:fadeUp .65s var(--ease) forwards;}
+.slide.active .rh{animation:slideH .70s var(--ease) forwards;}
+.rv[data-d="1"],.rh[data-d="1"]{animation-delay:.04s!important}
+.rv[data-d="2"],.rh[data-d="2"]{animation-delay:.14s!important}
+.rv[data-d="3"],.rh[data-d="3"]{animation-delay:.24s!important}
+.rv[data-d="4"],.rh[data-d="4"]{animation-delay:.34s!important}
+.rv[data-d="5"],.rh[data-d="5"]{animation-delay:.44s!important}
+.rv[data-d="6"],.rh[data-d="6"]{animation-delay:.54s!important}
+.rv[data-d="7"],.rh[data-d="7"]{animation-delay:.64s!important}
+.rv[data-d="8"],.rh[data-d="8"]{animation-delay:.74s!important}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideH{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:translateX(0)}}
+.logo-in{opacity:0;transform:scale(.96);}
+.slide.active .logo-in{animation:logoIn .9s var(--ease) .05s forwards;}
+@keyframes logoIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}
+#hdr{position:fixed;top:0;left:0;right:0;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 40px;z-index:100;pointer-events:none;}
+#hdr-logo{font-family:var(--fd);font-weight:900;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--t3);opacity:0;transition:opacity .4s;}
+body.past-cover #hdr-logo{opacity:1;}
+#hdr-count{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--t4);}
+#nav{position:fixed;bottom:28px;left:0;right:0;display:flex;align-items:center;justify-content:center;gap:14px;z-index:100;}
+.nbtn{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(255,255,255,.03);color:var(--t3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;backdrop-filter:blur(8px);}
+.nbtn:hover{border-color:var(--borderb);color:var(--t1);}
+.nbtn:disabled{opacity:.15;cursor:not-allowed;}
+#dots{display:flex;align-items:center;gap:6px;}
+.dot{width:5px;height:5px;border-radius:50%;background:var(--t4);transition:all .3s;cursor:pointer;}
+.dot.on{width:20px;border-radius:3px;background:var(--t2);}
+#notes-panel{position:fixed;bottom:0;left:0;right:0;background:rgba(3,3,10,.97);border-top:1px solid var(--border);padding:14px 96px;transform:translateY(100%);transition:transform .3s var(--ease);z-index:200;backdrop-filter:blur(20px);}
+#notes-panel.open{transform:translateY(0);}
+#notes-tag{font-size:9px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--silver);margin-bottom:6px;}
+#notes-body{font-size:13px;line-height:1.65;color:var(--t2);}
+.eyebrow{font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--silver);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";display:block;width:16px;height:1px;background:var(--silver);}
+.hero{font-family:var(--fd);font-weight:900;font-size:clamp(58px,7.5vw,104px);line-height:.92;letter-spacing:-.01em;color:var(--t1);text-transform:uppercase;margin-bottom:26px;}
+.hero-xl{font-family:var(--fd);font-weight:900;font-size:clamp(72px,9.5vw,132px);line-height:.88;letter-spacing:-.015em;color:var(--t1);text-transform:uppercase;margin-bottom:26px;}
+.sub{font-size:clamp(15px,1.7vw,19px);font-weight:400;line-height:1.65;color:var(--t2);max-width:640px;}
+.rule{width:40px;height:1px;background:var(--borderb);margin:22px 0;}
+.aline{width:100%;height:1px;background:linear-gradient(90deg,var(--borderb) 0%,transparent 80%);margin:22px 0;}
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px 26px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.proto{display:flex;flex-direction:column;}
+.proto-item{display:flex;align-items:flex-start;gap:16px;padding:15px 0;border-bottom:1px solid var(--border);}
+.proto-item:last-child{border:none;}
+.proto-num{font-family:var(--fd);font-weight:900;font-size:13px;letter-spacing:.1em;color:var(--t4);flex-shrink:0;min-width:26px;margin-top:1px;}
+.proto-text{font-size:15px;line-height:1.5;color:var(--t1);}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;width:100%;max-width:900px;}
+.kpi{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:28px 20px;text-align:center;}
+.kpi-num{font-family:var(--fd);font-weight:900;font-size:clamp(42px,5vw,68px);line-height:1;color:var(--t1);margin-bottom:8px;}
+.kpi-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--t3);}
+.tier-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;width:100%;max-width:840px;}
+.tier{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:26px 20px;text-align:center;position:relative;}
+.tier.featured{border-color:var(--borderb);background:rgba(255,255,255,.06);}
+.tier-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--t1);color:var(--bg);font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:3px 14px;border-radius:20px;white-space:nowrap;}
+.tier-name{font-family:var(--fd);font-weight:900;font-size:17px;letter-spacing:.12em;text-transform:uppercase;color:var(--t2);margin-bottom:6px;}
+.tier-trucks{font-size:11px;color:var(--t4);margin-bottom:10px;letter-spacing:.1em;text-transform:uppercase;}
+.tier-price{font-family:var(--fd);font-weight:900;font-size:52px;letter-spacing:-.02em;color:var(--t1);margin:8px 0;line-height:1;}
+.tier-desc{font-size:12px;line-height:1.7;color:var(--t3);}
+</style>
+</head>
+<body>
+<div id="hdr"><div id="hdr-logo">AM Operations Group</div><div id="hdr-count">01 / 09</div></div>
+<div id="deck">
+
+<!-- 01 COVER -->
+<div class="slide centered" id="s1">
+  <div class="logo-in" style="margin-bottom:40px">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAANVCAYAAAAnd1OJAAAki0lEQVR42u3dy5LctgFA0QuX/v+XkVUWrnIcaWaaxOOcfWKJTYDAFdg95pwBAAAAAGf6yyUAAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABAAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAKASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAKgEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAACoBEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACA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EAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAKgEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAACoBEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgEoABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAoBIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAqARAAAAAAEgABAAAAAC29B95qaPfA/uTKQAAAABJRU5ErkJggg==" alt="AM Operations Group" style="height:72px;width:auto;filter:brightness(0) invert(1);opacity:.9">
+  </div>
+  <div class="rv" data-d="1" style="font-family:var(--fd);font-weight:900;font-size:clamp(52px,7vw,96px);line-height:.9;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:18px">
+    <span style="color:var(--t1)">We Run<br>The Operation.</span>
+  </div>
+  <div class="rv" data-d="2" style="font-family:var(--fd);font-weight:900;font-size:clamp(52px,7vw,96px);line-height:.9;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:36px;color:var(--t3)">
+    You Run<br>The Business.
+  </div>
+  <div class="rv" data-d="3" style="font-size:11px;font-weight:600;letter-spacing:.3em;text-transform:uppercase;color:var(--t4)">Based in Texas</div>
+</div>
+
+<!-- 02 THE PROBLEM -->
+<div class="slide" id="s2">
+  <div class="eyebrow rh" data-d="1">The Problem</div>
+  <div class="hero rv" data-d="2">Your trucks<br>are moving.<br><span style="color:var(--t3)">Your back office<br>is not.</span></div>
+  <div class="aline rv" data-d="3" style="max-width:480px"></div>
+  <div class="sub rv" data-d="4">Every load without follow-up is money left behind. Short pays go unchallenged. Invoices go out late. Loads go dark. Most carriers lose thousands per truck every year to problems a real operations team would have caught.</div>
+</div>
+
+<!-- 03 WHAT WE ARE -->
+<div class="slide" id="s3">
+  <div class="eyebrow rh" data-d="1">What We Are</div>
+  <div class="hero rv" data-d="2">Not a dispatcher.<br><span style="color:var(--silver)">Your full<br>operations team.</span></div>
+  <div class="aline rv" data-d="3" style="max-width:480px"></div>
+  <div class="g2 rv" data-d="4" style="max-width:780px;margin-top:8px">
+    <div class="card">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:8px">Traditional Dispatch</div>
+      <div style="font-size:15px;line-height:1.7;color:var(--t3)">Books loads. Answers calls. That's it. Everything else — invoicing, disputes, follow-up, accounting — is on you.</div>
+    </div>
+    <div class="card" style="border-color:var(--borderb);background:rgba(255,255,255,.06)">
+      <div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);margin-bottom:8px">AM Operations Group</div>
+      <div style="font-size:15px;line-height:1.7;color:var(--t1)">The entire back office. Monitoring, billing, disputes, load integrity, and dispatch — handled. You drive. We run the operation.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 OUR SERVICES -->
+<div class="slide" id="s4">
+  <div class="eyebrow rh" data-d="1">What We Handle</div>
+  <div class="hero rv" data-d="2" style="font-size:clamp(44px,5.5vw,76px);margin-bottom:24px">Five services.<br><span style="color:var(--t3)">One team.</span></div>
+  <div class="proto rv" data-d="3" style="max-width:760px;width:100%">
+    <div class="proto-item">
+      <div class="proto-num">01</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Active Load Monitoring</strong> &nbsp;<span style="color:var(--t3)">Every load watched start to finish. Check calls, driver contact, broker updates — nothing goes dark.</span></div>
+    </div>
+    <div class="proto-item">
+      <div class="proto-num">02</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Dispute Resolution</strong> &nbsp;<span style="color:var(--t3)">Short pays, deductions, and broker claims handled fast. We file, follow up, and recover what's owed.</span></div>
+    </div>
+    <div class="proto-item">
+      <div class="proto-num">03</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Load Integrity</strong> &nbsp;<span style="color:var(--t3)">Rate confirmation review, accessorial protection, and RC audits before every load moves.</span></div>
+    </div>
+    <div class="proto-item">
+      <div class="proto-num">04</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Billing &amp; Payment Tracking</strong> &nbsp;<span style="color:var(--t3)">Invoicing, aging reports, and payment follow-up. Your cash flow stays clean and on time.</span></div>
+    </div>
+    <div class="proto-item">
+      <div class="proto-num">05</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Dispatch</strong> &nbsp;<span style="color:var(--t3)">Load sourcing, broker negotiation, and lane optimization. Add-on or fully managed — your call.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 THE NUMBERS -->
+<div class="slide centered" id="s5">
+  <div class="eyebrow rv" data-d="1" style="justify-content:center">By The Numbers</div>
+  <div class="hero rv" data-d="2" style="text-align:center;margin-bottom:48px">What you get<br><span style="color:var(--t3)">from day one.</span></div>
+  <div class="kpi-grid rv" data-d="3">
+    <div class="kpi">
+      <div class="kpi-num">24/7</div>
+      <div class="kpi-label">Load Monitoring</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num">&lt;24hr</div>
+      <div class="kpi-label">Invoice Turnaround</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num">100%</div>
+      <div class="kpi-label">Load Visibility</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-num">$0</div>
+      <div class="kpi-label">Hiring Overhead</div>
+    </div>
+  </div>
+</div>
+
+<!-- 06 HOW IT WORKS -->
+<div class="slide" id="s6">
+  <div class="eyebrow rh" data-d="1">How It Works</div>
+  <div class="hero rv" data-d="2" style="font-size:clamp(48px,6vw,86px);margin-bottom:32px">Up and running<br><span style="color:var(--t3)">in 48 hours.</span></div>
+  <div class="proto rv" data-d="3" style="max-width:680px;width:100%">
+    <div class="proto-item">
+      <div class="proto-num">01</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Onboard</strong> &nbsp;<span style="color:var(--t3)">We collect your MC, lanes, broker relationships, and preferences. One call. No paperwork stack.</span></div>
+    </div>
+    <div class="proto-item">
+      <div class="proto-num">02</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Activate</strong> &nbsp;<span style="color:var(--t3)">Your ops team goes live. Monitoring, billing, and dispute coverage starts immediately. No ramp-up period.</span></div>
+    </div>
+    <div class="proto-item">
+      <div class="proto-num">03</div>
+      <div class="proto-text"><strong style="color:var(--t1)">Scale</strong> &nbsp;<span style="color:var(--t3)">Add trucks. Add services. We grow with you — same team, same standards, same response time at 1 truck or 50.</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 PRICING -->
+<div class="slide" id="s7">
+  <div class="eyebrow rh" data-d="1">Partnership Tiers</div>
+  <div class="hero rv" data-d="2" style="font-size:clamp(44px,5.5vw,72px);margin-bottom:28px">Percentage of<br><span style="color:var(--t3)">what we book.</span><br><span style="color:var(--silver)">Nothing more.</span></div>
+  <div class="rv" data-d="3" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:14px;width:100%;max-width:1000px">
+    <div class="card" style="border-color:var(--border)">
+      <div style="font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--t4);margin-bottom:10px">1–10 Trucks</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:52px;line-height:1;color:var(--t1);margin-bottom:12px">10<span style="font-size:24px;color:var(--t3)">%</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Active load monitoring</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Billing &amp; invoicing</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Dispute resolution</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Load integrity review</div>
+      </div>
+    </div>
+    <div class="card" style="border-color:var(--border)">
+      <div style="font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--t4);margin-bottom:10px">11–25 Trucks</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:52px;line-height:1;color:var(--t1);margin-bottom:12px">8<span style="font-size:24px;color:var(--t3)">%</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Everything in Starter</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Priority response</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Dedicated account rep</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Weekly performance report</div>
+      </div>
+    </div>
+    <div class="card" style="border-color:var(--borderb);background:rgba(255,255,255,.06);position:relative">
+      <div style="position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--t1);color:var(--bg);font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:3px 14px;border-radius:20px;white-space:nowrap">Most Common</div>
+      <div style="font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-bottom:10px">26–40 Trucks</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:52px;line-height:1;color:var(--t1);margin-bottom:12px">6<span style="font-size:24px;color:var(--t3)">%</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Everything in Growth</div>
+        <div style="font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Custom reporting</div>
+        <div style="font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Volume lane optimization</div>
+        <div style="font-size:12px;color:var(--t2);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Fleet-level broker relations</div>
+      </div>
+    </div>
+    <div class="card" style="border-color:var(--border)">
+      <div style="font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--t4);margin-bottom:10px">41+ Trucks</div>
+      <div style="font-family:var(--fd);font-weight:900;font-size:52px;line-height:1;color:var(--t1);margin-bottom:12px">4<span style="font-size:24px;color:var(--t3)">%</span></div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Full ops outsourcing</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Dedicated ops team</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Executive reporting</div>
+        <div style="font-size:12px;color:var(--t3);display:flex;align-items:center;gap:6px"><span style="color:var(--silver)">&#10003;</span> Custom SLA agreement</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 08 TRIAL -->
+<div class="slide" id="s8">
+  <div class="eyebrow rh" data-d="1">How We Start</div>
+  <div class="hero rv" data-d="2" style="font-size:clamp(48px,6.5vw,90px);margin-bottom:28px">30 days.<br><span style="color:var(--t3)">No contract.<br>No risk.</span></div>
+  <div class="aline rv" data-d="3" style="max-width:520px"></div>
+  <div class="rv" data-d="4" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;max-width:780px;width:100%">
+    <div class="card">
+      <div style="font-family:var(--fd);font-weight:900;font-size:42px;color:var(--t1);line-height:1;margin-bottom:10px">30<span style="font-size:20px;color:var(--t3)"> days</span></div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:8px">Trial Period</div>
+      <div style="font-size:13px;line-height:1.6;color:var(--t3)">We run your full operation for 30 days. No paperwork. No commitment. Just results.</div>
+    </div>
+    <div class="card" style="border-color:var(--borderb);background:rgba(255,255,255,.06)">
+      <div style="font-family:var(--fd);font-weight:900;font-size:42px;color:var(--t1);line-height:1;margin-bottom:10px">If it<span style="font-size:22px;color:var(--silver)"> works</span></div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--silver);margin-bottom:8px">We Sign</div>
+      <div style="font-size:13px;line-height:1.6;color:var(--t2)">We formalize the partnership with a contract built around your fleet and your terms.</div>
+    </div>
+    <div class="card">
+      <div style="font-family:var(--fd);font-weight:900;font-size:42px;color:var(--t1);line-height:1;margin-bottom:10px">If it<span style="font-size:22px;color:var(--t3)"> doesn't</span></div>
+      <div style="font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--t4);margin-bottom:8px">We Part Ways</div>
+      <div style="font-size:13px;line-height:1.6;color:var(--t3)">You pay only for the work done. No penalties, no pressure. Clean and fair on both sides.</div>
+    </div>
+  </div>
+  <div class="rv" data-d="5" style="margin-top:22px;font-size:13px;color:var(--t4);font-style:italic;max-width:620px">We operate this way because we know what we deliver. The 30 days is our proof — not your obligation.</div>
+</div>
+
+<!-- 09 CLOSE -->
+<div class="slide centered" id="s9">
+  <div class="rv" data-d="1" style="font-family:var(--fd);font-weight:900;font-size:clamp(52px,7.5vw,104px);line-height:.9;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:36px">
+    <span style="color:var(--t3)">You drive.<br>We handle<br>everything</span><br>
+    <span style="color:var(--t1)">else.</span>
+  </div>
+  <div class="aline rv" data-d="2" style="max-width:440px;margin:0 auto 28px"></div>
+  <div class="rv" data-d="3" style="font-size:20px;font-weight:500;color:var(--t2);margin-bottom:32px">Ready to start?</div>
+  <div class="rv" data-d="4" style="font-size:15px;color:var(--t4);letter-spacing:.1em">info@amopsgroup.com</div>
+</div>
+
+</div>
+<div id="nav">
+  <button class="nbtn" id="btn-prev" onclick="go(-1)">&#8592;</button>
+  <div id="dots"></div>
+  <button class="nbtn" id="btn-next" onclick="go(1)">&#8594;</button>
+</div>
+<div id="notes-panel">
+  <div id="notes-tag">Presenter Notes · N to toggle</div>
+  <div id="notes-body"></div>
+</div>
+<script>
+const NOTES=[
+  "Cover. Don't start talking yet — let them read it. 'We Run The Operation. You Run The Business.' That's the whole pitch in one line. Wait for their reaction.",
+  "The Problem. Make it personal. If they mentioned losing money on a short pay or a load going dark — reference it here. 'This is what's happening right now with most carriers.' Let it land.",
+  "What We Are. The comparison card is key. Point to the left: 'This is what most carriers have.' Point to the right: 'This is what we are.' Ask: has anyone ever run your back office for you?",
+  "Our Services. Don't read all five. Pick the two or three they mentioned as pain points. Anchor there. End with: 'All five are included — not add-ons, not extra fees.'",
+  "The Numbers. Let the KPIs speak. After you read them: 'Zero. That's how much overhead you add to your payroll. We absorb all of it.' Pause after $0.",
+  "How It Works. Emphasize 48 hours. 'Most carriers tell me it took weeks to onboard with their last dispatcher. We're live in two days.' That's a real differentiator.",
+  "Pricing. Frame it as a percentage of what you're already making — not an expense. 'At 10%, if we help you recover one short pay a month, we've already paid for ourselves.'",
+  "Free Trial. This is your close setup. 'Seven days. Zero commission. We run your operation and you keep everything. If it's not better than what you have — you walk.' No risk objection survives this.",
+  "Close. Slow down here. After you read it — stop talking. The next person who speaks loses. Wait for them to say yes, ask a question, or name an objection. Either answer moves you forward."
+];
+const TOTAL=9;let cur=0,busy=false,notesOpen=false;
+const slides=Array.from(document.querySelectorAll(".slide"));
+const dotsEl=document.getElementById("dots");
+for(let i=0;i<TOTAL;i++){const d=document.createElement("div");d.className="dot"+(i===0?" on":"");d.onclick=(idx=>()=>go(idx-cur))(i);dotsEl.appendChild(d);}
+slides[0].classList.add("active");slides[0].style.opacity="1";slides[0].style.pointerEvents="all";
+updateUI();
+function go(dir){
+  const next=cur+dir;if(next<0||next>=TOTAL||busy)return;busy=true;
+  const from=cur,to=next,fwd=dir>0;
+  ["anim-exit-fwd","anim-exit-back","anim-enter-fwd","anim-enter-back"].forEach(c=>{slides[from].classList.remove(c);slides[to].classList.remove(c);});
+  slides[to].querySelectorAll(".rv,.rh,.logo-in").forEach(el=>{el.style.animation="none";el.offsetHeight;el.style.animation="";});
+  slides[to].style.opacity="1";slides[to].style.pointerEvents="none";
+  slides[from].classList.add(fwd?"anim-exit-fwd":"anim-exit-back");
+  slides[to].classList.add(fwd?"anim-enter-fwd":"anim-enter-back");
+  setTimeout(()=>{
+    slides[from].classList.remove("active","anim-exit-fwd","anim-exit-back");
+    slides[from].style.opacity="0";slides[from].style.pointerEvents="none";
+    slides[to].classList.remove("anim-enter-fwd","anim-enter-back");
+    slides[to].classList.add("active");slides[to].style.pointerEvents="all";
+    cur=to;updateUI();busy=false;
+  },500);
+}
+function updateUI(){
+  document.querySelectorAll(".dot").forEach((d,i)=>d.classList.toggle("on",i===cur));
+  document.getElementById("hdr-count").textContent=String(cur+1).padStart(2,"0")+" / "+String(TOTAL).padStart(2,"0");
+  document.body.classList.toggle("past-cover",cur>0);
+  document.getElementById("btn-prev").disabled=cur===0;
+  document.getElementById("btn-next").disabled=cur===TOTAL-1;
+  document.getElementById("notes-body").textContent=NOTES[cur];
+}
+document.addEventListener("keydown",e=>{
+  if(["ArrowRight","ArrowDown"," "].includes(e.key)){e.preventDefault();go(1);}
+  else if(["ArrowLeft","ArrowUp"].includes(e.key)){e.preventDefault();go(-1);}
+  else if(e.key==="n"||e.key==="N"){notesOpen=!notesOpen;document.getElementById("notes-panel").classList.toggle("open",notesOpen);}
+  else if(e.key==="f"||e.key==="F"){if(!document.fullscreenElement)document.documentElement.requestFullscreen?.();else document.exitFullscreen?.();}
+  else if(e.key==="Home")go(-cur);else if(e.key==="End")go(TOTAL-1-cur);
+});
+document.getElementById("deck").addEventListener("click",e=>{
+  if(e.target.closest("input,button"))return;
+  e.clientX>window.innerWidth/2?go(1):go(-1);
+});
+</script>
+</body>
+</html>
