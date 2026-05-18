@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AM Operations Group | We Run The Operation. You Run The Business.</title>
+<meta name="description" content="AM Operations Group is the full operations department your fleet needs load monitoring, dispute resolution, billing, and dispatch without the overhead of building one.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070F;--card:rgba(255,255,255,.04);--cardh:rgba(255,255,255,.07);
+  --border:rgba(255,255,255,.08);--borderb:rgba(255,255,255,.18);
+  --silver:#B8B8CC;--silver-d:rgba(184,184,204,.10);--silver-l:rgba(184,184,204,.18);
+  --t1:rgba(255,255,255,.95);--t2:rgba(255,255,255,.55);--t3:rgba(255,255,255,.28);--t4:rgba(255,255,255,.12);
+  --fd:"Barlow Condensed",sans-serif;--fb:"Inter",sans-serif;
+  --ease:cubic-bezier(.25,.46,.45,.94);
+  --nav-h:64px;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* ── NAV ── */
+#nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 60px;transition:background .5s var(--ease),backdrop-filter .5s,border-color .5s}
+#nav.scrolled{background:rgba(7,7,15,.85);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--fd);font-weight:900;font-size:15px;letter-spacing:.18em;text-transform:uppercase;color:var(--t1);text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:36px}
+.nav-links a{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--t1)}
+.nav-cta{padding:9px 22px;border:1px solid var(--borderb);border-radius:6px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--t1);text-decoration:none;transition:all .2s;position:relative;overflow:hidden}
+.nav-cta::after{content:"";position:absolute;inset:0;background:rgba(255,255,255,.06);transform:translateX(-101%);transition:transform .3s var(--ease)}
+.nav-cta:hover::after{transform:translateX(0)}
+.nav-cta:hover{border-color:var(--t1)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 60px 80px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.hero-gradient{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(ellipse,rgba(255,255,255,.028) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);animation:pulse 8s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6}50%{transform:translate(-50%,-50%) scale(1.15);opacity:1}}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:80px 80px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 0%,transparent 100%)}
+.hero-particles{position:absolute;inset:0;overflow:hidden}
+.particle{position:absolute;width:2px;height:2px;border-radius:50%;background:var(--silver);opacity:0;animation:float linear infinite}
+@keyframes float{0%{opacity:0;transform:translateY(0) translateX(0)}10%{opacity:.6}90%{opacity:.2}100%{opacity:0;transform:translateY(-120vh) translateX(20px)}}
+.hero-eyebrow{font-size:10px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--t4);margin-bottom:28px;animation:fadeUp .8s var(--ease) .2s both}
+.hero-h1{font-family:var(--fd);font-weight:900;font-size:clamp(64px,9vw,130px);line-height:.88;letter-spacing:-.01em;text-transform:uppercase;color:var(--t1);margin-bottom:0;animation:fadeUp .9s var(--ease) .3s both}
+.hero-h2{font-family:var(--fd);font-weight:900;font-size:clamp(64px,9vw,130px);line-height:.88;letter-spacing:-.01em;text-transform:uppercase;color:var(--silver);margin-bottom:36px;animation:fadeUp .9s var(--ease) .45s both}
+.hero-sub{font-size:clamp(15px,1.6vw,19px);font-weight:400;line-height:1.7;color:var(--t2);max-width:580px;margin:0 auto 48px;animation:fadeUp .9s var(--ease) .6s both}
+.hero-ctas{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;animation:fadeUp .9s var(--ease) .75s both}
+.btn-primary{padding:14px 36px;background:var(--t1);color:var(--bg);font-family:var(--fb);font-size:12px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s;position:relative;overflow:hidden}
+.btn-primary::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.4) 50%,transparent 60%);transform:translateX(-100%);transition:transform .5s}
+.btn-primary:hover::after{transform:translateX(100%)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 8px 32px rgba(255,255,255,.12)}
+.btn-secondary{padding:14px 36px;border:1px solid var(--borderb);color:var(--t1);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;border-radius:6px;transition:all .2s}
+.btn-secondary:hover{border-color:var(--t1);background:rgba(255,255,255,.04)}
+
+/* ── SHARED ── */
+section{padding:96px 60px}
+.section-eyebrow{font-size:10px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--silver);margin-bottom:20px;display:flex;align-items:center;gap:14px;width:100%}
+.section-eyebrow::before{content:"";width:24px;height:1px;background:var(--silver);flex-shrink:0;opacity:.5}
+.section-h{font-family:var(--fd);font-weight:900;font-size:clamp(40px,5.5vw,76px);line-height:.92;letter-spacing:-.02em;text-transform:uppercase;color:var(--t1);margin-bottom:24px}
+.section-sub{font-size:clamp(15px,1.5vw,18px);font-weight:400;line-height:1.7;color:var(--t2);max-width:600px}
+.aline{width:100%;height:1px;background:linear-gradient(90deg,var(--borderb) 0%,transparent 80%);margin:60px 0}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 30px;transition:background .35s var(--ease),border-color .35s var(--ease),transform .35s var(--ease)}
+.card:hover{background:var(--cardh);border-color:rgba(255,255,255,.14)}
+.card-label{font-size:9px;font-weight:800;letter-spacing:.26em;text-transform:uppercase;color:var(--t4);margin-bottom:12px}
+.card-title{font-family:var(--fd);font-weight:900;font-size:22px;letter-spacing:.04em;text-transform:uppercase;color:var(--t1);margin-bottom:10px}
+.card-text{font-size:14px;line-height:1.75;color:var(--t2)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+[data-delay="1"]{transition-delay:.1s}
+[data-delay="2"]{transition-delay:.2s}
+[data-delay="3"]{transition-delay:.3s}
+[data-delay="4"]{transition-delay:.4s}
+[data-delay="5"]{transition-delay:.5s}
+[data-delay="6"]{transition-delay:.6s}
+
+/* ── PROBLEM ── */
+#problem{background:var(--bg);max-width:1200px;margin:0 auto}
+#problem-wrap{padding:100px 60px}
+.problem-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:52px}
+.problem-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px 30px;position:relative;overflow:hidden}
+.problem-card::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 120px 80px at 50% 0%,rgba(255,255,255,.03),transparent);pointer-events:none}
+.problem-num{font-family:var(--fd);font-weight:900;font-size:52px;letter-spacing:-.02em;color:var(--t4);line-height:1;margin-bottom:14px}
+
+/* ── SOLUTION ── */
+#solution{border-top:1px solid var(--border)}
+.solution-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.solution-steps{display:flex;flex-direction:column;gap:0}
+.step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border:none}
+.step-num{font-family:var(--fd);font-weight:900;font-size:13px;letter-spacing:.1em;color:var(--t4);flex-shrink:0;min-width:28px;margin-top:2px}
+.step-title{font-size:15px;font-weight:700;color:var(--t1);margin-bottom:5px}
+.step-text{font-size:13.5px;line-height:1.6;color:var(--t2)}
+
+/* ── SERVICES ── */
+#services{border-top:1px solid var(--border)}
+.services-inner{max-width:1200px;margin:0 auto}
+.services-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:52px}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:30px 32px;position:relative;overflow:hidden;transition:border-color .3s}
+.service-card::after{content:"";position:absolute;inset:-1px;border-radius:14px;border:1px solid transparent;background:linear-gradient(135deg,var(--silver-l),transparent 50%) border-box;opacity:0;transition:opacity .3s;pointer-events:none}
+.service-card:hover{border-color:transparent}
+.service-card:hover::after{opacity:1}
+.service-icon{font-size:24px;margin-bottom:14px}
+.service-tag{font-size:9px;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--silver);margin-bottom:10px}
+.service-title{font-family:var(--fd);font-weight:900;font-size:24px;letter-spacing:.04em;text-transform:uppercase;color:var(--t1);margin-bottom:10px}
+.service-text{font-size:14px;line-height:1.75;color:var(--t2);margin-bottom:16px}
+.service-bullets{display:flex;flex-direction:column;gap:5px}
+.service-bullets span{font-size:12px;color:var(--t3);display:flex;align-items:center;gap:8px}
+.service-bullets span::before{content:"";width:5px;height:1px;background:var(--silver);display:inline-block;flex-shrink:0}
+.service-card.featured-service{grid-column:span 2;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+
+/* ── STATS ── */
+#stats{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:60px}
+.stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat-item{text-align:center;padding:20px;border-right:1px solid var(--border)}
+.stat-item:last-child{border:none}
+.stat-num{font-family:var(--fd);font-weight:900;font-size:clamp(48px,5vw,72px);line-height:1;color:var(--t1);margin-bottom:6px}
+.stat-label{font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--t3)}
+
+/* ── HOW IT WORKS ── */
+#how{border-top:1px solid var(--border)}
+.how-inner{max-width:1200px;margin:0 auto}
+.how-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:52px}
+.how-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 30px}
+.how-num{font-family:var(--fd);font-weight:900;font-size:80px;line-height:1;color:var(--t4);margin-bottom:16px;letter-spacing:-.02em}
+
+/* ── WHY ── */
+#why{border-top:1px solid var(--border)}
+.why-inner{max-width:1200px;margin:0 auto}
+.why-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:52px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:32px 30px}
+
+/* ── TIERS ── */
+#tiers{border-top:1px solid var(--border)}
+.tiers-inner{max-width:1200px;margin:0 auto}
+.tiers-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin-top:52px}
+.tier{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:36px 30px;position:relative}
+.tier.featured{border-color:var(--borderb);background:rgba(255,255,255,.06)}
+.tier-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--t1);color:var(--bg);font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:4px 16px;border-radius:20px;white-space:nowrap}
+.tier-name{font-family:var(--fd);font-weight:900;font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--t3);margin-bottom:8px}
+.tier-headline{font-family:var(--fd);font-weight:900;font-size:clamp(28px,3vw,40px);line-height:1.05;text-transform:uppercase;color:var(--t1);margin-bottom:16px}
+.tier-desc{font-size:13.5px;line-height:1.7;color:var(--t2);margin-bottom:24px}
+.tier-features{display:flex;flex-direction:column;gap:8px}
+.tier-feature{font-size:12px;color:var(--t3);display:flex;align-items:center;gap:10px}
+.tier-feature::before{content:"";color:var(--silver);font-weight:700;flex-shrink:0}
+.tier-cta{display:block;margin-top:28px;padding:11px 24px;text-align:center;border:1px solid var(--border);border-radius:8px;font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--t2);text-decoration:none;transition:all .2s}
+.tier-cta:hover{border-color:var(--borderb);color:var(--t1)}
+.tier.featured .tier-cta{background:var(--t1);color:var(--bg);border-color:var(--t1)}
+.tier.featured .tier-cta:hover{background:rgba(255,255,255,.88)}
+
+/* ── CTA ── */
+#cta{border-top:1px solid var(--border);text-align:center;padding:120px 60px}
+.cta-inner{max-width:800px;margin:0 auto}
+.cta-h{font-family:var(--fd);font-weight:900;font-size:clamp(40px,5.5vw,78px);line-height:.95;text-transform:uppercase;color:var(--t1);margin-bottom:24px}
+.cta-sub{font-size:clamp(15px,1.5vw,18px);font-weight:400;line-height:1.7;color:var(--t2);max-width:520px;margin:0 auto 40px}
+.cta-email{font-size:18px;font-weight:600;color:var(--t1);text-decoration:none;letter-spacing:.02em;border-bottom:1px solid var(--borderb);padding-bottom:2px;transition:border-color .2s}
+.cta-email:hover{border-color:var(--t1)}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid var(--border);padding:32px 60px;display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:var(--fd);font-weight:900;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3)}
+.footer-copy{font-size:11px;color:var(--t4)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:11px;color:var(--t4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--t2)}
+
+/* ── TYPING ── */
+.typing-cursor{display:inline-block;width:3px;height:.85em;background:var(--silver);margin-left:4px;vertical-align:middle;animation:blink .8s step-end infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── FADE UP ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  #nav{padding:0 24px}
+  .nav-links{display:none}
+  section,#stats{padding:72px 24px}
+  #hero{padding:100px 24px 72px}
+  .problem-grid,.grid2,.grid3,.how-grid,.why-grid,.tiers-grid,.services-grid{grid-template-columns:1fr}
+  .solution-inner{grid-template-columns:1fr;gap:40px}
+  .stats-inner{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border:none}
+  .stat-item:nth-child(3){border-right:1px solid var(--border)}
+  .service-card.featured-service{grid-column:auto;grid-template-columns:1fr}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:32px 24px}
+}
+
+/* ── ENHANCED ANIMATIONS ── */
+
+/* Hero text shimmer on hover */
+.hero-h1,.hero-h2{background-clip:text;-webkit-background-clip:text}
+.hero-h1:hover{text-shadow:0 0 80px rgba(255,255,255,.15)}
+
+/* Glowing line beneath section eyebrow */
+.section-eyebrow::after{content:"";width:24px;height:1px;background:var(--silver);flex-shrink:0;opacity:.5}
+.section-eyebrow[style*="center"]::before,.section-eyebrow[style*="center"]::after{flex:1;width:auto;max-width:80px}
+
+/* Card tilt effect */
+.service-card,.why-card,.how-card,.problem-card,.tier{transform-style:preserve-3d;transform:perspective(1000px) rotateX(0deg) rotateY(0deg);transition:transform .3s var(--ease),background .25s,border-color .25s}
+
+/* Stat bar glow */
+.stat-num{text-shadow:0 0 40px rgba(255,255,255,.08)}
+
+/* Hero gradient animation upgrade */
+.hero-gradient{animation:pulse 6s ease-in-out infinite}
+
+/* Stagger in on reveal */
+.reveal{transition:opacity .8s var(--ease),transform .8s var(--ease)}
+.reveal.visible{opacity:1;transform:none}
+
+/* Soft beam behind hero headline */
+.hero-beam{position:absolute;width:600px;height:2px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);top:50%;left:50%;transform:translate(-50%,-50%);animation:beam 4s ease-in-out infinite;pointer-events:none}
+@keyframes beam{0%,100%{opacity:0;width:400px}50%{opacity:1;width:700px}}
+
+/* Scroll progress bar */
+#progress{position:fixed;top:0;left:0;height:1px;background:linear-gradient(90deg,var(--silver),rgba(184,184,204,.3));z-index:9999;width:0%;transition:width .1s linear}
+
+/* Footer separator */
+footer::before{content:"";display:block;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent);position:absolute;top:0;left:10%;right:10%}
+footer{position:relative}
+
+/* Service tag remove emoji fallback dot */
+.service-tag{padding-left:0}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAANVCAYAAAAnd1OJAAAki0lEQVR42u3dy5LctgFA0QuX/v+XkVUWrnIcaWaaxOOcfWKJTYDAFdg95pwBAAAAAGf6yyUAAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABAAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAKASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAKgEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAACoBEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACA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EAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAKgEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAACoBEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgEoABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAoBIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAqARAAAAAAEgABAAAAAC29B95qaPfA/uTKQAAAABJRU5ErkJggg==" alt="AM Operations Group" style="height:40px;width:auto;display:block;filter:brightness(0) invert(1)"></a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#why">Why Us</a>
+    <a href="#tiers">Tiers</a>
+    <a href="mailto:info@amopsgroup.com" class="nav-cta">Contact Us</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <div class="hero-gradient"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-particles" id="particles"></div>
+  </div>
+  <div style="margin-bottom:40px;animation:fadeUp .8s var(--ease) 0s both"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAANVCAYAAAAnd1OJAAAki0lEQVR42u3dy5LctgFA0QuX/v+XkVUWrnIcaWaaxOOcfWKJTYDAFdg95pwBAAAAAGf6yyUAAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABAAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAKASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAKgEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAACoBEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACA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EAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAKgEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAACoBEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgEoABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAoBIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAACABEAAAAABIAAQAAAAAEgABAAAAgARAAAAAACABEAAAAABIAAQAAAAAEgABAAAAIAEQAAAAAEgABAAAAAASAAEAAACABEAAAAAAIAEQAAAAAEgABAAAAIAEQAAAAAAgARAAAAAASAAEAAAAABIAAQAAAIAEQAAAAAAgARAAAAAAqARAAAAAAEgABAAAAAC29B95qaPfA/uTKQAAAABJRU5ErkJggg==" alt="AM Operations Group" style="height:64px;width:auto;filter:brightness(0) invert(1);opacity:.9"></div>
+  <div class="hero-eyebrow">Nationwide Operations</div>
+  <div class="hero-h1">We Run<br>The Operation.</div>
+  <div class="hero-h2">You Run<br>The Business.</div>
+  <div class="hero-sub">The full operations department your fleet needs. Load monitoring, dispute resolution, billing, and dispatch without the cost of building one.</div>
+  <div class="hero-ctas">
+    <a href="#cta" class="btn-primary">Get Started</a>
+    <a href="#how" class="btn-secondary">See How It Works</a>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<div id="problem-wrap">
+<section id="problem" style="padding:0">
+  <div class="reveal">
+    <div class="section-eyebrow">The Problem</div>
+    <div class="section-h">Most growing fleets<br>hit the same wall.</div>
+    <div class="section-sub">You have the trucks and the drivers. What you don't have is the bandwidth to run a full back office and the cost of building one is killing your margin.</div>
+  </div>
+  <div class="problem-grid" style="margin-top:52px">
+    <div class="problem-card reveal" data-delay="1">
+      <div class="problem-num">01</div>
+      <div class="card-title">Dispatchers Are Overwhelmed</div>
+      <div class="card-text">Your team is trying to manage drivers, find loads, handle disputes, and do check calls all at once. Something always falls through the cracks.</div>
+    </div>
+    <div class="problem-card reveal" data-delay="2">
+      <div class="problem-num">02</div>
+      <div class="card-title">Back Office Is Falling Behind</div>
+      <div class="card-text">Invoices delayed. Short pays unchallenged. Loads going dark mid-route. Every operational gap costs money and damages your broker relationships.</div>
+    </div>
+    <div class="problem-card reveal" data-delay="3">
+      <div class="problem-num">03</div>
+      <div class="card-title">Hiring Isn't The Answer</div>
+      <div class="card-text">Salary. Benefits. Training time. Turnover. The cost and risk of building an in-house ops team eats into margin before they produce a single dollar.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- SOLUTION -->
+<section id="solution" style="padding:100px 60px">
+  <div class="solution-inner">
+    <div>
+      <div class="section-eyebrow reveal-left">The Solution</div>
+      <div class="section-h reveal-left" data-delay="1">AM Operations<br>steps in as<br>your ops team.</div>
+      <div class="section-sub reveal-left" data-delay="2" style="margin-top:20px">We become an extension of your company not a vendor you manage. Your team keeps running the trucks. We run everything behind them.</div>
+    </div>
+    <div class="solution-steps">
+      <div class="step reveal" data-delay="1">
+        <div class="step-num">01</div>
+        <div><div class="step-title">No disruption to your existing team</div><div class="step-text">Your dispatchers, your drivers, your structure stays intact. We plug in as the operations layer, not a replacement.</div></div>
+      </div>
+      <div class="step reveal" data-delay="2">
+        <div class="step-num">02</div>
+        <div><div class="step-title">Full coverage from day one</div><div class="step-text">Load monitoring, dispute resolution, billing active from day one. No ramp-up period where things fall through.</div></div>
+      </div>
+      <div class="step reveal" data-delay="3">
+        <div class="step-num">03</div>
+        <div><div class="step-title">Performance-based, no contracts</div><div class="step-text">We earn when you run. No monthly retainers. No lock-in. If we don't perform, you don't stay simple as that.</div></div>
+      </div>
+      <div class="step reveal" data-delay="4">
+        <div class="step-num">04</div>
+        <div><div class="step-title">Scale without adding headcount</div><div class="step-text">Add 10 trucks or 50. Your ops cost doesn't scale linearly ours does the work and your margin stays intact.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div id="stats">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num" data-target="24" data-suffix="/7">0</div>
+      <div class="stat-label">Load Monitoring</div>
+    </div>
+    <div class="stat-item reveal" data-delay="1">
+      <div class="stat-num" data-target="24" data-prefix="&lt;" data-suffix="hr">0</div>
+      <div class="stat-label">Invoice Turnaround</div>
+    </div>
+    <div class="stat-item reveal" data-delay="2">
+      <div class="stat-num" data-target="100" data-suffix="%">0</div>
+      <div class="stat-label">Load Visibility</div>
+    </div>
+    <div class="stat-item reveal" data-delay="3">
+      <div class="stat-num" data-target="0" data-prefix="$" data-suffix="">0</div>
+      <div class="stat-label">Hiring Overhead</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">What We Handle</div>
+      <div class="section-h">The full operation.<br>Every layer.</div>
+      <div class="section-sub" style="margin-top:16px">We don't do one thing. We do everything your back office needs so you can focus entirely on growing the fleet.</div>
+    </div>
+    <div class="services-grid" style="margin-top:52px">
+      <div class="service-card reveal" data-delay="1">
+        <div class="service-icon"></div>
+        <div class="service-tag">Full Load Visibility</div>
+        <div class="service-title">Active Load Monitoring</div>
+        <div class="service-text">We monitor every load from pickup to delivery. Check calls, ETA updates, broker communication, and real-time exception handling all handled without you lifting a finger.</div>
+        <div class="service-bullets">
+          <span>Real-time shipment monitoring</span>
+          <span>Proactive check calls</span>
+          <span>Exception alerts and resolution</span>
+          <span>Broker status communication</span>
+        </div>
+      </div>
+      <div class="service-card reveal" data-delay="2">
+        <div class="service-icon"></div>
+        <div class="service-tag">Load Integrity</div>
+        <div class="service-title">Load Integrity</div>
+        <div class="service-text">Every rate confirmation reviewed clause by clause before a truck moves. We maintain compliance standards that build elite broker trust and keep your MC protected.</div>
+        <div class="service-bullets">
+          <span>RC clause-by-clause review</span>
+          <span>Compliance monitoring</span>
+          <span>Performance tracking</span>
+          <span>Broker relationship management</span>
+        </div>
+      </div>
+      <div class="service-card reveal" data-delay="3">
+        <div class="service-icon">️</div>
+        <div class="service-tag">Payment Protection</div>
+        <div class="service-title">Dispute Resolution</div>
+        <div class="service-text">Short pay filed in writing within 24 hours. No exceptions. We verify every payment before it clears and fight any discrepancy with documented, written disputes that hold brokers accountable.</div>
+        <div class="service-bullets">
+          <span>24-hour short pay filing</span>
+          <span>Written dispute documentation</span>
+          <span>Payment verification</span>
+          <span>Leadership escalation when needed</span>
+        </div>
+      </div>
+      <div class="service-card reveal" data-delay="4">
+        <div class="service-icon"></div>
+        <div class="service-tag">Financial Operations</div>
+        <div class="service-title">Accounting & Invoicing</div>
+        <div class="service-text">Invoice generation, payment tracking, aging reports, and revenue reconciliation. Your financial ops run clean and on time without adding accounting staff to payroll.</div>
+        <div class="service-bullets">
+          <span>Invoice generation and delivery</span>
+          <span>Payment status tracking</span>
+          <span>Aging report management</span>
+          <span>Revenue reconciliation</span>
+        </div>
+      </div>
+      <div class="service-card featured-service reveal" data-delay="5">
+        <div>
+          <div class="service-icon"></div>
+          <div class="service-tag">Optional Add-On</div>
+          <div class="service-title">Load Finding<br>& Dispatch</div>
+          <div class="service-text">If your team needs help sourcing freight we bring private broker channels, rate intelligence, and direct negotiation. Loads your fleet actually wants to move at rates worth taking. Most of our partners add this after seeing what we do with ops.</div>
+        </div>
+        <div class="service-bullets" style="align-self:center">
+          <span>Private load channels never just DAT</span>
+          <span>Rate intelligence on every lane</span>
+          <span>Direct broker negotiation</span>
+          <span>Detention pre-negotiated per load</span>
+          <span>AI-backed rate analysis</span>
+          <span>First access before loads go public</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="padding:100px 60px">
+  <div class="how-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">The Process</div>
+      <div class="section-h">Simple. Seamless.<br>No disruption.</div>
+    </div>
+    <div class="how-grid">
+      <div class="how-card reveal" data-delay="1">
+        <div class="how-num">01</div>
+        <div class="card-title">We Learn Your Operation</div>
+        <div class="card-text">We map your current setup fleet size, lanes, team structure, pain points, and goals. No generic playbook. Every partnership is built around what you already have.</div>
+      </div>
+      <div class="how-card reveal" data-delay="2">
+        <div class="how-num">02</div>
+        <div class="card-title">We Plug In Seamlessly</div>
+        <div class="card-text">AM Operations integrates directly into your workflow. Your team keeps doing what they do. We take on the ops layer immediately no transition period where things fall through.</div>
+      </div>
+      <div class="how-card reveal" data-delay="3">
+        <div class="how-num">03</div>
+        <div class="card-title">You Scale Without Overhead</div>
+        <div class="card-text">As your fleet grows, we grow with it. No new hires, no retraining, no benefit packages. The ops infrastructure scales with your trucks at a fraction of the cost of building it yourself.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY AM OPS -->
+<section id="why" style="padding:100px 60px">
+  <div class="why-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">The Difference</div>
+      <div class="section-h">Not a vendor.<br>An extension.</div>
+      <div class="section-sub" style="margin-top:16px">We don't book loads and disappear. We're in the details before, during, and after every movement your fleet makes.</div>
+    </div>
+    <div class="why-grid" style="margin-top:52px">
+      <div class="why-card reveal" data-delay="1">
+        <div class="card-label">Structural Advantage</div>
+        <div class="card-title">Broker-Side Background</div>
+        <div class="card-text">Our founders spent years on the broker side. We know exactly how rate confirmations are written to cost you, which language games exist, and how to negotiate before a load ever hits the public board. That knowledge is yours now.</div>
+      </div>
+      <div class="why-card reveal" data-delay="2">
+        <div class="card-label">Full Coverage</div>
+        <div class="card-title">Complete Ops Not Just Dispatch</div>
+        <div class="card-text">Every other dispatcher handles loads. We handle the entire operation. Billing, dispute resolution, load monitoring, the full back office running behind your fleet so nothing falls through and no money gets left on the table.</div>
+      </div>
+      <div class="why-card reveal" data-delay="3">
+        <div class="card-label">Zero Risk</div>
+        <div class="card-title">No Contracts. No Overhead.</div>
+        <div class="card-text">Month-to-month. Performance-based. If we don't produce you leave. We don't ask for a commitment upfront because we know what we deliver. Our track record is the pitch. Results are the contract.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIERS -->
+<section id="tiers" style="padding:100px 60px">
+  <div class="tiers-inner">
+    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 52px">
+      <div class="section-eyebrow" style="justify-content:center">Partnership Tiers</div>
+      <div class="section-h">The right fit<br>for your fleet.</div>
+      <div class="section-sub" style="margin:16px auto 0">Every partnership starts with a 30-day trial. No contracts. No lock-in. We prove it before you commit to anything.</div>
+    </div>
+    <div class="tiers-grid">
+      <div class="tier reveal" data-delay="1">
+        <div class="tier-name">Ops Support</div>
+        <div class="tier-headline">Back Office<br>Covered.</div>
+        <div class="tier-desc">The full operational layer for fleets that already have dispatchers but need the back office handled professionally.</div>
+        <div class="tier-features">
+          <div class="tier-feature">Active load monitoring</div>
+          <div class="tier-feature">Load integrity & RC review</div>
+          <div class="tier-feature">Dispute resolution (24hr filing)</div>
+          <div class="tier-feature">Billing & payment tracking</div>
+          <div class="tier-feature">Broker relationship management</div>
+        </div>
+        <a href="mailto:info@amopsgroup.com" class="tier-cta">Get Started</a>
+      </div>
+      <div class="tier featured reveal" data-delay="2">
+        <div class="tier-badge">Most Popular</div>
+        <div class="tier-name">Full Ops Partner</div>
+        <div class="tier-headline">The Complete<br>Operation.</div>
+        <div class="tier-desc">Everything in Ops Support plus active load sourcing private channels, rate intelligence, and direct broker negotiation for your fleet.</div>
+        <div class="tier-features">
+          <div class="tier-feature">Everything in Ops Support</div>
+          <div class="tier-feature">Private load channel access</div>
+          <div class="tier-feature">AI-backed rate intelligence</div>
+          <div class="tier-feature">Direct broker negotiation</div>
+          <div class="tier-feature">Detention pre-negotiated per load</div>
+          <div class="tier-feature">Dedicated account management</div>
+        </div>
+        <a href="mailto:info@amopsgroup.com" class="tier-cta">Get Started</a>
+      </div>
+      <div class="tier reveal" data-delay="3">
+        <div class="tier-name">Enterprise</div>
+        <div class="tier-headline">Custom<br>Built For You.</div>
+        <div class="tier-desc">For fleets of 25+ trucks requiring a fully dedicated operations team, custom reporting, and strategic account management.</div>
+        <div class="tier-features">
+          <div class="tier-feature">Everything in Full Ops Partner</div>
+          <div class="tier-feature">Dedicated ops team assigned</div>
+          <div class="tier-feature">Custom reporting & analytics</div>
+          <div class="tier-feature">Strategic lane planning</div>
+          <div class="tier-feature">Direct founder-level access</div>
+          <div class="tier-feature">Negotiated volume rate</div>
+        </div>
+        <a href="mailto:info@amopsgroup.com" class="tier-cta">Contact Us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" style="padding:120px 60px">
+  <div class="cta-inner">
+    <div class="reveal">
+      <div class="section-eyebrow" style="justify-content:center">Get Started</div>
+      <div class="cta-h">Stop building<br>an ops team.<br><span style="color:var(--t2)">Start running one.</span></div>
+      <div class="cta-sub">Your fleet deserves a back office that performs at the same level as your drivers. Let's build it without adding a single person to your payroll.</div>
+      <div style="margin-bottom:32px">
+        <a href="mailto:info@amopsgroup.com" class="cta-email">info@amopsgroup.com</a>
+      </div>
+      <a href="mailto:info@amopsgroup.com" class="btn-primary">Email a Rep Today</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">AM Operations Group</div>
+  <div class="footer-copy">© 2026 AM Operations Group</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#tiers">Tiers</a>
+    <a href="mailto:info@amopsgroup.com">Contact</a>
+  </div>
+</footer>
+
+<script>
+// NAV scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+}, { passive: true });
+
+// Particles
+(function() {
+  const container = document.getElementById('particles');
+  const count = 28;
+  for (let i = 0; i < count; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left: ${Math.random() * 100}%;
+      top: ${60 + Math.random() * 40}%;
+      width: ${Math.random() > 0.7 ? 3 : 2}px;
+      height: ${Math.random() > 0.7 ? 3 : 2}px;
+      opacity: ${0.2 + Math.random() * 0.4};
+      animation-duration: ${8 + Math.random() * 14}s;
+      animation-delay: ${Math.random() * 10}s;
+    `;
+    container.appendChild(p);
+  }
+})();
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal, .reveal-left');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+// Stat counters
+function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+function animateCounter(el) {
+  const target = parseInt(el.dataset.target);
+  const prefix = el.dataset.prefix || '';
+  const suffix = el.dataset.suffix !== undefined ? el.dataset.suffix : '';
+  if (target === 0) { el.textContent = prefix + '0' + suffix; return; }
+  const duration = 1800;
+  const start = performance.now();
+  function update(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const val = Math.round(easeOut(progress) * target);
+    el.textContent = prefix + val.toLocaleString() + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+const statEls = document.querySelectorAll('.stat-num[data-target]');
+const statObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animateCounter(e.target);
+      statObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+statEls.forEach(el => statObs.observe(el));
+
+// Scroll progress bar
+const progress = document.createElement('div');
+progress.id = 'progress';
+document.body.prepend(progress);
+window.addEventListener('scroll', () => {
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  progress.style.width = pct + '%';
+}, { passive: true });
+
+// Card tilt on mouse move
+document.querySelectorAll('.service-card,.why-card,.how-card,.tier').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(1000px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+});
+
+</script>
+</body>
+</html>
