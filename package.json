@@ -1,1 +1,1 @@
-{"name":"amo-website","version":"1.0.0","scripts":{"start":"node server.js"},"dependencies":{"express":"^4.18.2"}}
+{"name":"amo-website","version":"1.0.0","scripts":{"build":"echo ready","start":"node server.js"},"dependencies":{"express":"^4.18.2"}}
